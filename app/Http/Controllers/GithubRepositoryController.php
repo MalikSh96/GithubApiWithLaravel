@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
-use App\Models\Githubrepository;
 use App\Helpers\IRequestData;
 use App\Helpers\IDataBaseHandler;
 
