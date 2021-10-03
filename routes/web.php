@@ -21,7 +21,6 @@ Route::get('/', function (){
 
 Route::get('/search', [GithubRepositoryController::class, 'search'])->name('search');
 Route::post('/search', [GithubRepositoryController::class, 'getRepositoriesForUsername']);
-// Route::post('/search', [GithubRepositoryController::class, 'getRepositories']);
 
 Route::get('/error', function (){
     return view('error');

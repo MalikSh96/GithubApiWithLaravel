@@ -15,6 +15,7 @@ class DataBaseHandler implements IDataBaseHandler
 	 */
 	public function createUser(string $username)
 	{
+		//Objective: Create a user
 		$user = User::create([
 			'username' => $username
 		]);
@@ -62,7 +63,8 @@ class DataBaseHandler implements IDataBaseHandler
 	function getRepositoriesForUserByUsername(string $username) 
     {
         //Objective: Return a list a repos where the username is the requested one
-        //returns all list from db for given username -- is a laravel collection
+        //returns all list from db for given username
+		//By using ::with we are doing eager loading and avoiding "many" sql queries
         $repos = User::with('repositories')->where('username', $username)->first();
         return $repos;
 	}

@@ -3,6 +3,8 @@
 namespace App\Helpers;
 
 use Illuminate\Support\Facades\Http;
+use Illuminate\Http\Client\RequestException;
+
 class RequestData implements IRequestData
 {
 	/**
@@ -13,13 +15,21 @@ class RequestData implements IRequestData
 	 */
 	public function ApiDataRequester(string $username) 
     {
-		//Make request to Github Api for speific user and return contents, if any
-        $response = Http::get("https://api.github.com/users/{$username}/repos");
-        // dd($response);
-        if(!$response->successful())
-            return null; //handle error here
-        $repositories = $response->json();
-        return $repositories;
+		try
+		{
+			//Make request to Github Api for specific user and return contents, if any
+			$response = Http::get("https://api.github.com/users/{$username}/repos");
+		} 
+		catch (RequestException $ex) 
+		{
+			//Handle 3rd Party API Errors by Catching Their Exceptions
+			abort(404, 'Github Repository not found');	
+		}
+		finally 
+		{
+			$repositories = $response->json();
+        	return $repositories;
+		}
 	}
 }
 ?>

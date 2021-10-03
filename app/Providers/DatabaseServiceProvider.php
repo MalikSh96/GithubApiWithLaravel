@@ -15,7 +15,7 @@ class DatabaseServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //since we will make multiple calls during our request, we used scoped lifetime
+        //since we will make multiple calls during our request, we use scoped lifetime
         $this->app->scoped(IDataBaseHandler::class, DataBaseHandler::class);
     }
 

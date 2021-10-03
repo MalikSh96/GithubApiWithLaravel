@@ -22,7 +22,7 @@ class Githubrepository extends Model
         'html_url'
     ];
 
-    //creating a relationship that ties back to the user model
+    //creating an eloquent relationship that ties back to the user model
     public function user()
     {
         return $this->belongsTo(User::class);

@@ -43,7 +43,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    //Setting up first Eloquent relationship
+    //Setting up Eloquent relationship
     //you just define it out as a method on the user model (or whichever model needs the relationship)
     public function repositories()
     {
