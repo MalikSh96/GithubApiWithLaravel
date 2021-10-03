@@ -39,12 +39,13 @@ class GithubRepositoryController extends Controller
         ]);
         $username = $request->username; //accessing the username field
         //check if user exists in db with repos
-        $checkUsername = $this->databaseHandler->getSingleUserByUsernameFromDB($username);
+        $checkUsername = $this->databaseHandler->getUser($username);
         if($checkUsername !== null)
         {
             $repos = $this->databaseHandler->getRepositoriesForUserByUsername($checkUsername->username);
             return view('repositories.dbindex', [
-                'repos' => $repos
+                'repos' => $repos->repositories,
+                'user' => $checkUsername->username
             ]);
         }
         else 
@@ -55,9 +56,10 @@ class GithubRepositoryController extends Controller
             else
             {
                 $datas = $result;
+                $user = $this->databaseHandler->createUser($username);
                 foreach($datas as $data)
                 {
-                    $this->databaseHandler->createUserWithRepos($data['name'], $username, $data['html_url']);
+                    $this->databaseHandler->createUserWithRepos($data['name'], $user->id, $data['html_url']);
                 }
                 return view('repositories.index', compact('datas', 'username')); //compact can be used to pass data between controller and view
             }

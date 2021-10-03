@@ -16,7 +16,8 @@ class CreateGithubrepositoriesTable extends Migration
         Schema::create('githubrepositories', function (Blueprint $table) {
             $table->id();
             $table->string('repositoryname');
-            $table->string('username');
+            // $table->string('username');
+            $table->foreignId('user_id'); //need to track id of corresponding user for this repo
         });
     }
 

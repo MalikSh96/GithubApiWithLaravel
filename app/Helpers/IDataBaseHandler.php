@@ -4,8 +4,9 @@ namespace App\Helpers;
 
 interface IDataBaseHandler 
 {
-    public function createUserWithRepos(string $repositoryname, string $username, string $url);
-    public function getSingleUserByUsernameFromDB(string $username);
+    public function createUser(string $username);
+    public function getUser(string $username);
+    public function createUserWithRepos(string $repositoryname, int $user_id, string $url);
     public function getRepositoriesForUserByUsername(string $username);
 }
 ?>

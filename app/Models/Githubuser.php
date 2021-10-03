@@ -13,12 +13,12 @@ class Githubuser extends Model
         'username',
     ];
 
-    //Setting up first Eloquent relationship
-    //you just define it out as a method on the user model (or whichever model needs the relationship)
-    public function repositories()
-    {
-        //return $this->hasMany(NameOfRelationshipModel::class)
-        return $this->hasMany(Githubrepository::class);
-    }
+    // //Setting up first Eloquent relationship
+    // //you just define it out as a method on the user model (or whichever model needs the relationship)
+    // public function repositories()
+    // {
+    //     //return $this->hasMany(NameOfRelationshipModel::class)
+    //     return $this->hasMany(Githubrepository::class);
+    // }
 
 }

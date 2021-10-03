@@ -18,13 +18,13 @@ class Githubrepository extends Model
 
     protected $fillable = [
         'repositoryname',
-        'username',
+        'user_id',
         'html_url'
     ];
 
-    //creating a relationship that ties back to the githubuser model
-    public function githubuser()
+    //creating a relationship that ties back to the user model
+    public function user()
     {
-        return $this->belongsTo(Githubuser::class);
+        return $this->belongsTo(User::class);
     }
 }

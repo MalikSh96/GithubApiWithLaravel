@@ -19,7 +19,7 @@
                 @foreach($repos as $repo)
                 <tr>
                     <td class="px-6 py-4 font-medium">
-                        {{ $repo['username'] }}
+                        {{ $user }}
                     </td>
                     <td class="px-6 py-4">
                         {{ $repo['repositoryname'] }}

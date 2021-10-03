@@ -14,7 +14,7 @@ class AddingUsernameToGithubusersTable extends Migration
     public function up()
     {
         Schema::table('githubusers', function (Blueprint $table) {
-            $table->string('username');
+            $table->string('username')->unique();
         });
     }
 
